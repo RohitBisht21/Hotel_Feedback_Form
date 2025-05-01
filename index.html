@@ -74,21 +74,28 @@
   <textarea id="description" name="description"></textarea><br>
 
   <!-- Custom field: Booking__c -->
-  <input type="hidden" name="00NdL00000cHJqp" value="" />
+  <!-- input type="hidden" name="00NdL00000cHJqp" value="" / -->
+  <input type="text" name="00NdL00000cHJqp" placeholder="Booking ID" />
+
 
   <input type="submit" name="submit" value="Submit Feedback">
 
 </form>
 
 <script>
-  window.addEventListener('DOMContentLoaded', function () {
+  window.addEventListener('load', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const bookingId = urlParams.get('bookingId');
-    if (bookingId) {
-      document.querySelector('input[name="00NdL00000cHJqp"]').value = bookingId;
+    const field = document.querySelector('input[name="00NdL00000cHJqp"]');
+    if (bookingId && field) {
+      field.value = bookingId;
+      console.log('Booking ID set to:', bookingId);
+    } else {
+      console.log('Booking ID not found or field missing');
     }
   });
 </script>
+
 
 </body>
 </html>
